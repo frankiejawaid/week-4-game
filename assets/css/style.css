@@ -1,0 +1,41 @@
+.container {
+
+	font-family: "Book Antiqua";Palatino, "Palatino Linotype", Georgia, serif;
+	color:white;
+	font-size:18px;
+	font-style:normal;
+	font-variant: normal;
+	font-weight: 500;
+	
+}
+
+#red {
+	width:100px;
+	height:100px;
+	background:red;
+	opacity: 40px
+}
+
+#blue {
+	width:100px;
+	height:100px;
+	background:blue;
+}
+
+
+#yellow {
+	width:100px;
+	height:100px;
+	background:yellow;
+}
+
+
+#green {
+	width:100px;
+	height:100px;
+	background:green;
+}
+
+
+
+
