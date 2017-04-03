@@ -1,78 +1,162 @@
+
+game = {
+
+		score: 0,
+
+		wins: 0,
+
+		losses: 0,
+
+		random_number: function(){
+			return (Math.floor(Math.random()*102)) + 19;
+		},
+
+		random_number_diamond: function(){
+			return (Math.floor(Math.random()*12)) + 1;
+		}
+
+	}
+
+	var random_goal = game.random_number();
+
+	var random_1 = game.random_number_diamond();
+
+	var random_2 = game.random_number_diamond();
+
+	var random_3 = game.random_number_diamond();
+
+	var random_4 = game.random_number_diamond();
+
 $(document).ready(function() {
 
-	crystals = ['assets/images/red.png','assets/images/blue.png','assets/images/yellow.png','assets/images/green.png'];
+	// what happens when the user wins or loses is similar. 
+	// We update the corresponding variables to restart the game and either increase wins or losses
 
-	var counter = 0;
-	var wins = 0;
-	var losses = 0;
-	$('#win').text(wins);
-	$('#loss').text(losses);
-	
-	newCrystals();
-	newGame();
+	score_title = {
+		
+		winning: 
 
-	function newCrystals () {
-		var numbers = []
-			while(numbers.length < 4){
-			  var randomnumber = Math.ceil(Math.random()*12)
-			  var found = false;
-			  for (var i=0; i< numbers.length; i++){
-				if (numbers[i] == randomnumber){
-					found = true; break
+			function(){
+
+				if(game.score === random_goal){
+
+					alert("You WIN!!");
+
+					game.wins = game.wins + 1;
+
+					game.score = 0;
+
+					random_goal = game.random_number();
+
+					random_1 = game.random_number_diamond();
+
+					random_2 = game.random_number_diamond();
+
+					random_3 = game.random_number_diamond();
+
+					random_4 = game.random_number_diamond(); 
+
+					$("#score").html(0);
+
+					$("#wins").html("Wins: " + game.wins);
+
+					$("#random-number").html(random_goal);
+
 				}
-			  }
-			  if(!found)numbers[numbers.length]=randomnumber;
-			}
-		console.log(numbers);		
+			},
 
-		for (i = 0; i < numbers.length; i++) {
-			var imageCrystal = $('<img>');
-			imageCrystal.attr('data-num', numbers[i]);
-			imageCrystal.attr('src', crystals[i]);
-			imageCrystal.attr('alt', 'crystals');
-			imageCrystal.addClass('crystalImage')
-			$('#crystals').append(imageCrystal);
-		}
+		losing: 
+
+			function(){
+
+				if(game.score > random_goal){
+
+					alert("You Lose!!!");
+
+					game.losses = game.losses + 1;
+
+					game.score = 0;
+
+					random_goal = game.random_number();
+
+					random_1 = game.random_number_diamond();
+
+					random_2 = game.random_number_diamond();
+
+					random_3 = game.random_number_diamond();
+
+					random_4 = game.random_number_diamond(); 
+
+					$("#score").html(0);
+
+					$("#losses").html("Losses: " + game.losses);
+
+					$("#random-number").html(random_goal);
+
+				}
+
+			}
+	
 	}
 
-	function newGame() {
+	//here we print the target number for the current game
 
-		counter = 0;
-		$('#yourScore').text(counter);
+	$("#random-number").html(random_goal);
 
-		function randomIntFromInterval(min,max){
-		   	return Math.floor(Math.random()*(max-min+1)+min);
-			}
+	//what happens when clicking each button.
+	//every time a button is clicked, we check if the user won or lost
 
-		var numberToGuess = randomIntFromInterval(19,120);
-
-		$('.value').text(numberToGuess);
+	$("#red").on("click",function(){
 
 
-		$('.crystalImage').on('click', function(){
-		    counter = counter + parseInt($(this).data('num'));
-		   
-		    $('#yourScore').text(counter);
+		game.score += random_1;
 
-		    if (counter == numberToGuess){
-		      alert("YOU LOSE!!!");
-		      wins ++;
-		      $('#win').text(wins);
-		      console.log(wins)
-		      $('#crystals').empty();
-		      newCrystals();
-		      newGame();
-		        
-		    } else if ( counter > numberToGuess){
-		        $('#status').text('You lost!')
-		        losses ++;
-		        $('#loss').text(losses);
-		        console.log(losses)
-		        $('#crystals').empty();
-		        newCrystals();
-		        newGame();
-		    }
-		});
-	}
+		$("#score").html(game.score);
+
+		score_keeping.winning();
+
+		score_keeping.losing();
+
+	});
+
+	$("#blue").on("click",function(){
+
+
+		game.score += random_2;
+
+		$("#score").html(game.score);
+
+		score_keeping.winning();
+
+		score_keeping.losing();
+
+	});
+
+	$("#yellow").on("click",function(){
+
+
+		game.score += random_3;
+
+		$("#score").html(game.score);
+
+		score_keeping.winning();
+
+		score_keeping.losing();
+
+	});
+
+	$("#green").on("click",function(){
+
+
+		game.score += random_4;
+
+		$("#score").html(game.score);
+
+		score_keeping.winning();
+
+		score_keeping.losing();
+
+	});
+
 
 });
