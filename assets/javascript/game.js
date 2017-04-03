@@ -1,4 +1,5 @@
 
+
 game = {
 
 		score: 0,
@@ -11,7 +12,7 @@ game = {
 			return (Math.floor(Math.random()*102)) + 19;
 		},
 
-		random_number_diamond: function(){
+		random_number_ruby: function(){
 			return (Math.floor(Math.random()*12)) + 1;
 		}
 
@@ -19,13 +20,13 @@ game = {
 
 	var random_goal = game.random_number();
 
-	var random_1 = game.random_number_diamond();
+	var random_1 = game.random_number_ruby();
 
-	var random_2 = game.random_number_diamond();
+	var random_2 = game.random_number_ruby();
 
-	var random_3 = game.random_number_diamond();
+	var random_3 = game.random_number_ruby();
 
-	var random_4 = game.random_number_diamond();
+	var random_4 = game.random_number_ruby();
 
 $(document).ready(function() {
 
@@ -48,13 +49,13 @@ $(document).ready(function() {
 
 					random_goal = game.random_number();
 
-					random_1 = game.random_number_diamond();
+					random_1 = game.random_number_ruby();
 
-					random_2 = game.random_number_diamond();
+					random_2 = game.random_number_ruby();
 
-					random_3 = game.random_number_diamond();
+					random_3 = game.random_number_ruby();
 
-					random_4 = game.random_number_diamond(); 
+					random_4 = game.random_number_ruby(); 
 
 					$("#score").html(0);
 
@@ -79,13 +80,13 @@ $(document).ready(function() {
 
 					random_goal = game.random_number();
 
-					random_1 = game.random_number_diamond();
+					random_1 = game.random_number_ruby();
 
-					random_2 = game.random_number_diamond();
+					random_2 = game.random_number_ruby();
 
-					random_3 = game.random_number_diamond();
+					random_3 = game.random_number_ruby();
 
-					random_4 = game.random_number_diamond(); 
+					random_4 = game.random_number_ruby(); 
 
 					$("#score").html(0);
 
